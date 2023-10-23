@@ -1,0 +1,16 @@
+# Use a base image with PySpark, Jupyter, and Python
+FROM jupyter/pyspark-notebook
+
+# Expose the port for Jupyter Notebook (default is 8888)
+EXPOSE 8888
+
+# Create a directory for logs inside the user's home directory
+USER jovyan
+RUN mkdir -p /home/jovyan/logs
+RUN mkdir -p /home/jovyan/data
+
+# Copy your .ipynb files into the container
+Copy cars.json       /home/data/
+
+# Start Jupyter Notebook with PySpark
+CMD ["start-notebook.sh", "--NotebookApp.token=''"]
