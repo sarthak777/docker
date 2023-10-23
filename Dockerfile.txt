@@ -6,6 +6,7 @@ EXPOSE 8888
 
 # Create a directory for logs inside the user's home directory
 USER jovyan
+chmod -R 777 /home
 RUN mkdir -p /home/jovyan/logs
 RUN mkdir -p /home/jovyan/data
 
